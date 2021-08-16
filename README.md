@@ -77,3 +77,21 @@ JPA는 좀 더 자세히 배워보고 싶음
 @OneToMany, @ManyToOne 등 Annotation에 대해 공부하는중
 
 어느 케이스일때 어떤 방식으로 구현하는지 아직 확실히 구분이 잘 안가서, 우선 댓글 기능을 구현하면서 테스트를 해보고자 한다.
+
+
+Comments.java 구현하면서 @OneToMany, @ManyToOne 등에 대해 공부하는중 
+
+Comments Entity 생성 이후 이상한점 및 배운점 정리 
+
+- Comments Entity 생성 이후 서버 실행시 테이블이 생성되기 전 alter table 이 실행 되는 문제점 발견
+  (Hibernate: alter table comments drop foreign key FKh4c7lvsc298whoyd4w9ta25cr) 왜 생기는지 이유 확인 필요
+- JPA에서 @OneToMany, @ManyToOne 등으로 매핑 되어 있을 경우 조회시 조인 데이터가 바로 조인되는 것이 아니고 FetchType에 따라 다르게 로딩된다.
+- Fetch Type 에는 LAZY(FetchType.LAZY)와 EAGER(FetchType.EAGER)가 있다 
+- LAZY는 실제 객체를 사용할 때 쿼리로 데이터를 조회한다. 
+- EAGER는 즉시 데이터를 조회한다.
+
+아직 이정도까지만 이해한 상황이고, 어떤게 더 좋고 어떨때 써야 하는지는 더 공부해봐야 할거 같다.
+
+이쯤 되니 책에서 말했던 JPA가 배우기 어렵고, 객체지향과 쿼리를 잘 알아야 쓸 수 있다고 하는 것이 어느정도 이해가 가는 중
+
+처음 구동시에 테이블이 생성되기도 전에 alter table이 실행되는 문제도 원인을 찾아봐야 할거 같다. 
